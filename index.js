@@ -1,3 +1,6 @@
 const readFile = require('./readFile');
+const readCsv = require('./readCsv');
 
-readFile();
+// readFile();
+
+readCsv();
