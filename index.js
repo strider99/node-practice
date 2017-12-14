@@ -1,6 +1,7 @@
-const readFile = require('./readFile');
-const readCsv = require('./readCsv');
+const readCSV = require('./util/Read-CSV');
 
-// readFile();
+/* #TODO
+let filePath = // Get From command line
 
-readCsv();
+readCSV(filePath);
+*/
