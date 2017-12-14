@@ -13,7 +13,7 @@ const readCsv = (filePath) => {
 		 		console.log(rowArray.join(','));
 		 	}
 		 	else {
-		 		console.warn(`${rowArray.join(',')}` + '\x1b[33m%s\x1b[0m',  ' !Address Not Found!');
+		 		console.warn(`${rowArray.join(',')}` + '\x1b[33m%s\x1b[0m',  ' !Data Not Found!');
 		 	}
 		 });
 		 // console.log(rows);
