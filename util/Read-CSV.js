@@ -16,7 +16,6 @@ const readCsv = (filePath) => {
 		 		console.warn(`${rowArray.join(',')}` + '\x1b[33m%s\x1b[0m',  ' !Data Not Found!');
 		 	}
 		 });
-		 // console.log(rows);
 	});
 }
 
