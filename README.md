@@ -1,4 +1,4 @@
 ### To run 
 ```
-npm start <filepath>
+npm start <filepath> <separator>
 ```
