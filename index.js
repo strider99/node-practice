@@ -7,12 +7,12 @@ let prompt = rl.createInterface(process.stdin, process.stdout);
 const args = process.argv.slice(2);
 
 const startParsingFile = (args) => {
-  if(args.length === 0){
+  if(args.length < 2){
     // prompt use for filename and separator
-    prompt.question("Enter the <filepath/filename separator>", function (params) {
-      params = params.split(' ');
-      if(params[0]){
-        readCSV(params[0]);
+    prompt.question("Invalid input format.\n Enter the <filepath/filename separator>", function (args) {
+      args = args.split(' ');
+      if(args[0] && args[1]){
+        readCSV(args);
         prompt.close();
       }
       else{
@@ -22,7 +22,7 @@ const startParsingFile = (args) => {
     });
   }
   else{
-    readCSV(args[0]);
+    readCSV(args);
     prompt.close();
   }
 }
