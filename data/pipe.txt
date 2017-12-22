@@ -1,0 +1,3 @@
+Kohli|Cricketer|Virat
+Invalid,Person
+Einstein|Scientists|Albert
