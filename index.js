@@ -11,8 +11,6 @@ const args = process.argv.slice(2);
 const checkArguments = new CheckArguments();
 
 checkArguments.on(eventsNames.events.AFTER_CHECK, (receivedParams) => {
-  console.log(receivedParams);
-  console.log("Args have been printed");
   readFile(receivedParams);
   prompt.close();
 })

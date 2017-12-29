@@ -21,6 +21,10 @@ class CheckArguments extends EventEmitter {
       }
       this.emit(eventsNames.events.AFTER_CHECK,parseParams);
     }
+    else {
+      console.log("Invalid Input Format");
+      process.exit();
+    }
   }
 
 }
