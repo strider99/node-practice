@@ -1,4 +1,4 @@
-const readCSV = require('./util/Read-CSV');
+const readFile = require('./util/Read-File');
 const rl = require("readline");
 const CheckArguments = require('./util/CheckArguments');
 const eventsNames = require('./util/EventsNames');
@@ -10,10 +10,10 @@ const args = process.argv.slice(2);
 
 const checkArguments = new CheckArguments();
 
-checkArguments.on(eventsNames.events.AFTER_CHECK, (parseParams) => {
-  console.log(parseParams);
+checkArguments.on(eventsNames.events.AFTER_CHECK, (receivedParams) => {
+  console.log(receivedParams);
   console.log("Args have been printed");
-  // readCSV(args);
+  readFile(receivedParams);
   prompt.close();
 })
 checkArguments.emit(eventsNames.events.CHECK,args);
