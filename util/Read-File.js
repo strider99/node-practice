@@ -2,6 +2,8 @@ const fs = require('fs');
 
 const readData = (params) => {
 	//loop throw array of params and log the output
+	const outputArray = [], invalidDataArray = [];
+	let filesRemaining = params.length;
 	params.forEach((param) => {
 		let filePath = param[0], separator = param[1];
 		// console.log(`The file path is ${filePath} and the separator is ${separator} `);
@@ -14,24 +16,42 @@ const readData = (params) => {
 			const rows = data.trim().split(/\r?\n/);
 			rows.forEach((row, index) => {
 				let rowArray = row.split(separator);
-				// console.log(rowArray);
 				
 				if(rowArray.length >= 3){
 					// console.log(rowArray.join(' '));
-					console.log(rowArray);
+					if(separator == '|'){
+						outputArray.push(rowArray[2] + ' ' + rowArray[0]);
+					}
+					else if(separator == '$') {
+						outputArray.push(rowArray[1] + ' ' + rowArray[0]);
+					}
+					else {
+						outputArray.push(rowArray[0] + ' ' + rowArray[1]);
+					}
+
 				}
 				// else if(rowArray.length === 1){
-				// 	console.log(rowArray + '\x1b[33m%s\x1b[0m','Separator not found');
-				// }
-				else {
-					console.warn(`${rowArray.join(' ')}` + '\x1b[33m%s\x1b[0m', ` !Data Not Found! at ', ${filePath} and line number ${index+1} `);
-				}
-			});
-		}
+					// 	console.log(rowArray + '\x1b[33m%s\x1b[0m','Separator not found');
+					// }
+					else {
+						invalidDataArray.push(`${rowArray.join(' ')}  at  ${filePath} and line number ${index+1} `);
+					}
+				}); //end of forEach
+			}
+			filesRemaining -= 1;
+			if( filesRemaining == 0){
+				outputArray.sort();
+				outputArray.forEach(person => console.log(person));
+				console.log('\n');
+				invalidDataArray.forEach(item => console.log(item));
+
+			}
+			
+		}); //end readFile
 		
-	}); //end readFile
 	
-}); //end params.forEach
+	}); //end params.forEach
+
 		
 	
 } //end readCSV
